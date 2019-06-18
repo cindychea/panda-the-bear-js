@@ -50,9 +50,35 @@ document.querySelectorAll('form input')[2].disabled = true;
 document.querySelector('.bio-info').parentNode.removeChild(document.querySelector('.bio-info'));
 
 
+<!-- PART 2 -->
+<!-- Panda the Bear is lying about their skills! Take the "time travel" skill off the page to satisfy your personal sense of justice. Use your googling and docs-skimming skillz to find a function that will allow you to remove elements from the DOM. (hint: there are multiple ways of doing this, but parentNode might be useful when it comes to selecting the right element) -->
+item = document.querySelectorAll('h4.bar-title')[2]
+item.parentNode.removeChild(item);
 
+<!-- That drawing of Pikachu is really cute. Let’s duplicate it using cloneNode() and insert it at the bottom of the .portfolio-container using insertAdjacentHTML() or appendChild().
+ -->
+ pika = document.querySelector('#right-image img')
+ pikapic = pika.cloneNode();
+ document.querySelector('.portfolio-container').appendChild(pikapic);
 
+<!-- Wow, that was so satisfying I think we should do it 10 more times. Use a for loop to help you do this. -->
+for (i=0; i<10; i++) { 
+    pikapic = document.querySelector('#right-image img').cloneNode();
+    document.querySelector('.portfolio-container').appendChild(pikapic);
+}
 
+<!-- Let’s add a message about when the page was last updated. We'll do this by appending a new <li> element to the <ul> in the sidebar (you might need to refresh the page to bring back the list items that we emptied out earlier). -->
+const listItem = document.createElement('li');
+const leftSpan = document.createElement('span');
+var lastUpdated = document.createTextNode('Page last updated on');
+leftSpan.appendChild(lastUpdated);
+listItem.appendChild(leftSpan);
+const rightSpan = document.createElement('span');
+var date = document.createTextNode(new Date);
+rightSpan.appendChild(date);
+listItem.appendChild(rightSpan);
+list = document.querySelector('.bio-info');
+list.appendChild(listItem);
 
 
 
